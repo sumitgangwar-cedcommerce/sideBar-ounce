@@ -1,38 +1,162 @@
 .App {
-  text-align: center;
+  display: flex;
+  gap: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.inte-sideBar {
   min-height: 100vh;
+  border-right: 0.1rem solid var(--inte-G40);
+  min-width: 28rem;
+  padding: 2.4rem 1.6rem;
+  font-weight: var(--weight-bolder);
+  font-size: var(--inte-FS1-6);
+  color: var(--inte-G450);
+  line-height: var(--inte-LH2-2);
+}
+
+.inte-sideBar__logo {
+  margin-bottom: 4.8rem;
+}
+
+.inte-sideBar__list {
   display: flex;
   flex-direction: column;
+}
+
+.inte-sideBar__list > .inte-sideBar__listItem {
+  padding: 1.2rem 1.6rem 1.2rem 2.4rem;
+  cursor: pointer;
+}
+
+.inte-sideBar__listItem > a {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap:1.6rem;
 }
 
-.App-link {
-  color: #61dafb;
+.inte-sideBar__listItem--expandable > a ,
+.inte-sideBar__listItem--withBadge > a{
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inte-sideBar__listItem > a > .inte-sideBar__expandIcon {
+  align-items: flex-end;
+}
+
+.inte-sideBar__Icon , .inte-sideBar__expandIcon {
+  display: flex;
+}
+
+.inte-sideBar__listItem svg {
+  stroke: var(--inte-G450);
+}
+
+.inte-sideBar__linkBody {
+  display: flex;
+  gap:1.6rem;
+  align-items: flex-start
+}
+
+.inte-sideBar__list .inte-sideBar__listItem--active ,
+.inte-sideBar__listItem--expandable--active {
+  padding: 0 0 0 0.8rem;
+}
+
+.inte-sideBar__list:not(.inte-sideBar__childList) > .inte-sideBar__listItem--active > a {
+  padding: 1.2rem 1.6rem;
+  background-color: var(--inte-P25);
+  border-radius:0.6rem ;
+}
+
+.inte-sideBar__list .inte-sideBar__listItem--active ,
+.inte-sideBar__listItem--expandable.inte-sideBar__listItem--active > a {
+  position: relative;
+}
+
+.inte-sideBar__listItem--active:not(.inte-sideBar__listItem--expandable)::before ,
+.inte-sideBar__listItem--expandable.inte-sideBar__listItem--active > a::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  left:0;
+  width: 0.4rem;
+  background-color: var(--inte-P900);
+  border-radius: 0 0.6rem 0.6rem 0;
+}
+
+.inte-sideBar__listItem--expandable.inte-sideBar__listItem--active > a::before {
+  left:-0.8rem;
+}
+
+.inte-sideBar__listItem--expandable--active {
+  padding-bottom:0 !important;
+}
+
+.inte-sideBar__listItem--expandable--active > a {
+  padding-bottom:1.2rem;
+}
+
+.inte-sideBar__childList .inte-sideBar__listItem {
+  padding: 1rem 1.6rem 1rem 5.2rem;
+  position: relative;
+}
+
+.inte-sideBar__listItem:not(.inte-sideBar__listItem--active) .inte-sideBar__childList .inte-sideBar__listItem {
+  padding-left:3.6rem;
+}
+
+.inte-sideBar__listItem:not(.inte-sideBar__listItem--active) .inte-sideBar__childList .inte-sideBar__listItem::before {
+  left:0.8rem
+}
+
+.inte-sideBar__childList .inte-sideBar__listItem::before {
+  content: '';
+  position: absolute;
+  left: 2.4rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: var(--inte-G450);
+  border-radius: 50%;
+  top:50%;
+}
+
+.inte-sideBar__listItem--active > a{
+  color:var(--inte-P900)
+}
+
+.inte-sideBar__listItem--active > a  .inte-sideBar__Icon svg {
+  stroke:var(--inte-P900)
+}
+
+.inte-sideBar__childList .inte-sideBar__listItem--active::before {
+  background-color: var(--inte-P900);
+}
+
+.inte-sideBar__listItem:not(.inte-sideBar__listItem--active) > .inte-sideBar__childList .inte-sideBar__listItem--withBadge {
+  padding-right: 0;
+}
+
+.inte-sideBar__title {
+  padding: 0.8rem 1.6rem;
+  font-size: var(--inte-FS1-4);
+  font-weight: var(--weight-normal);
+  line-height: var(--inte-LH2-0);
+}
+
+.inte-sideBar--seperator {
+  padding: 1.6rem 8rem;
+}
+.inte-sideBar__section:not(:last-child){
+  border-bottom:1px solid var(--inte-G40);
+  padding-bottom: 1.6rem;
+}
+
+.inte-sideBar__section:not(:first-child) {
+  padding-top: 1.6rem;
 }
